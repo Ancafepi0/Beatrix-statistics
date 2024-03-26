@@ -29,4 +29,3 @@ El programa muestra de manera gráfica lo siguiente:
 - Cuartiles.
 - Teorema de Chevyshev y la regla empírica.
 
-
