@@ -30,6 +30,7 @@ class menu:
         print ("\033["+"7;30;45"+"m "+" ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ "+" \033[0m")
         respuesta = int(input (""))
         return (respuesta)
-
+"""    
+#INSTACIA DE LA CLASE MENU
 creacion_menu = menu()
-creacion_menu.dibujar()
+creacion_menu.dibujar()"""
