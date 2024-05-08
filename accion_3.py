@@ -1,4 +1,4 @@
-class accion_2:
+class accion_3:
     #Constructor 
     def __init__(self):
         pass
@@ -52,6 +52,6 @@ class accion_2:
         mensaje= ("¯"*7)* dato_tope
         print ("\033["+"7;30;45"+"m"+" |   |"+mensaje+" \033[0m")
 
-ejecutar_2 = accion_2()
+ejecutar_3 = accion_3()
 lista=[[0,6],[1,2],[2,5],[4,7],[6,8],[9,3],[3,4],[5,9],[7,1],[8,0]]
-ejecutar_2.dibujar(lista)
+ejecutar_3.dibujar(lista)

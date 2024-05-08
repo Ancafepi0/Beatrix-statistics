@@ -83,6 +83,7 @@ class accion_9:
 
 
         return (mensaje)
+    
 ejecutar_9 = accion_9()
 lista_datos = [[111,112,113,114,115]]
 ejecutar_9.dibujar(lista_datos)

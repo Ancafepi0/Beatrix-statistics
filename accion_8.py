@@ -103,5 +103,5 @@ class accion_8:
 
         return (mensaje)
 ejecutar_8 = accion_8()
-lista_datos = [[111,112,113,114,115,116,117]]
+lista_datos = [['19.04', '10.32', '-1.6', '7.12', '15.84', '24.56', '33.28']]
 ejecutar_8.dibujar(lista_datos)
