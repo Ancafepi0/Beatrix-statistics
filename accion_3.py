@@ -1,57 +1,60 @@
 class accion_3:
-    #Constructor 
     def __init__(self):
         pass
-    #METODO PARA DIBUJAR EL DIAGRAMA DE BARRAS
-    def dibujar(self,lista_intervalo):
-        zona_inferior= self.modificador_intervalo(lista_intervalo)
-        print ("\033["+"7;30;45"+"m "+" ______________________________________________________ "+" \033[0m")
-        print ("\033["+"7;30;45"+"m "+"|                                                      |"+" \033[0m")        
-        zona_vertical= self.modiciador_vertical(lista_intervalo)
-        zona_horizontal= self.modificador_horizontal(lista_intervalo)
-        print ("\033["+"7;30;45"+"m "+"|  "+ zona_inferior +" \033[0m")
-        print ("\033["+"7;30;45"+"m "+"|                                                      |"+" \033[0m")                
-        print ("\033["+"7;30;45"+"m "+" ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯ "+" \033[0m")
-    #METODO PARA DIBUJAR LA LINEA DONDE VAN LOS INTERVALOS
-    def modificador_intervalo (self,lista_intervalo):
-        #CRAR TABLA CON LOS INTERVALOS UTILIZANDO 0 COMO INICIAL
-        linea_horizontal= ["0"]
-        #CICLO PARA SABER EL VALOR DE CADA INTERVALO
-        for intervalo in (lista_intervalo):
-            dato= str(intervalo[0])
-            linea_horizontal.append (dato)
-        #ORGANIZA LA LISTA DE MENO A MAYOR
-        linea_horizontal.sort()
-        #CONVIERTE LA LISTA EN UNA LINEA HORIZONTAL
-        linea_horizontal= "     ".join (linea_horizontal)     
-        return (linea_horizontal)
-    #METODO PARA DIBUJAR EL EJE Y
-    def modiciador_vertical(self,lista_intervalo):
-        #CREACION DE LISTA CON LA CUAL SE ALMACENA LA CANTIDAD LOS DATOS DE LA FRECUENCIA
-        linea_vertical = []
-        for intervalo in (lista_intervalo):
-            dato= int(intervalo[1])
-            linea_vertical.append (dato)
-        #VARIABLE CON EL NUMERO MAS GRANDE DE LA LISTA
-        numero_tope = int(max(linea_vertical)) 
-        #IMPRIME LA LINEA VERTICAL CON CIERTOS VALORES
-        for i in range (numero_tope,0,-1):  
-            for candidato in lista_intervalo:
-                if (candidato [1]== i):
-                    ubicacion = int(candidato [0]) 
-                    print ("\033["+"7;30;45"+"m "+"|",i, "|  "+"     " * ubicacion + " |¯¯¯¯| "," \033[0m")
-                    print ("\033["+"7;30;45"+"m "+"|"+ "   |  "+"     " * ubicacion+" | ",ubicacion,"| "," \033[0m")
+    def dibujar (self,intervalos):
+        lista_acomodar = [sublista[0] for sublista in intervalos]
+        lista_con_intervalos= self.acomodar_lista(lista_acomodar)
+        numero_de_intervalos=len(lista_con_intervalos)
+        lista_con_nombre = [sublista[1] for sublista in intervalos]
+        nombre_intervalo_grande= max(lista_con_nombre, key=len)
+        intervalo_mas_grande= max(lista_con_intervalos)
+        espacio_inter=2
+        espacio=5
+        if (len(str(intervalo_mas_grande))>1):
+            espacio_inter= len(str(intervalo_mas_grande))
+        for i in range (numero_de_intervalos):         
+            mensaje= []
+            for j in  intervalos:
 
+                
+                if (j[0]==lista_con_intervalos[i]):
+                    forma_linea= "\u250F\u2501\u2501\u2501\u2513".center(espacio," ")
+                    mensaje.append (forma_linea)
+                elif (j[0]>  lista_con_intervalos[i]):
+                    forma_linea = "\u258F   \u2595".center(espacio," ")
+                    mensaje.append (forma_linea)
+                else:
+                    forma_linea = "\u2800".center(espacio," ")
+                    mensaje.append (forma_linea)
+                
+            linea_contructura= ("") .join (mensaje)
+            print ("\033["+"7;30;45"+"m "+ str(lista_con_intervalos[i]).center(espacio_inter," ") +"\u2523"+" "+linea_contructura+" ".center(espacio_inter+1,"\u2800")+"\033[0m")
+        print ("\033["+"7;30;45"+"m "+" ".center(espacio_inter," ")+("\u2517")+(("\u2501")+('\u2501')+('\u2501')+("\u2501"))*(len(lista_acomodar)+2)+" ".center(espacio_inter+1," ")+"\033[0m")
+        contador=[]
+        num_contador=0
+        for i in range (len(lista_con_nombre)):
+            lista_con_nombre[i]=str(lista_con_nombre[i]).center(espacio,"\u2800")
+            num_contador +=1
+            contador.append(str(num_contador))
+        linea_intervalos= ("    ") .join (contador)
 
-    def modificador_horizontal(self,lista_intervalo):
-        lista_horizontal = []
-        for cantidad in lista_intervalo:
-            dato= str(cantidad[0])
-            lista_horizontal.append (dato)
-        dato_tope= int(len (lista_horizontal))
-        mensaje= ("¯"*7)* dato_tope
-        print ("\033["+"7;30;45"+"m"+" |   |"+mensaje+" \033[0m")
+        print ("\033["+"7;30;45"+"m"+" ".center(espacio+2,"\u2800")+linea_intervalos+" ".center(espacio,"\u2800")+"\033[0m")
+        for i in  range (len(lista_con_nombre)):
+            print ("\033["+"7;30;45"+"m "+contador[i]+" = "+lista_con_nombre[i]+"\u2800"+"\033[0m") 
+    def acomodar_lista(self, intervalos):
+    # Eliminar duplicados convirtiendo la lista a un conjunto
+        conjunto_intervalos = set(intervalos)
+        lista_ordenada = list(conjunto_intervalos)
+    
+    # Implementar el algoritmo de ordenamiento burbuja para ordenar de mayor a menor
+        n = len(lista_ordenada)
+        for i in range(n):
+            for j in range(0, n-i-1):
+                if lista_ordenada[j] < lista_ordenada[j+1]:  
+                    lista_ordenada[j], lista_ordenada[j+1] = lista_ordenada[j+1], lista_ordenada[j]
+    
+        return lista_ordenada 
 
-ejecutar_3 = accion_3()
-lista=[[0,6],[1,2],[2,5],[4,7],[6,8],[9,3],[3,4],[5,9],[7,1],[8,0]]
-ejecutar_3.dibujar(lista)
+nueva_accion = accion_3 ()
+intervalos_prueba= [[67 ,"Jertwert"],[12,"T"],[42,"T"],[3,"R"],[2,"F"],[1,"N"],[9,"L"]]
+nueva_accion.dibujar (intervalos_prueba)
