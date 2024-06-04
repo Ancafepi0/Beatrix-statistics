@@ -31,12 +31,12 @@ class accion_1:
                             str(valor_frp),
                             str(valor_frpa),
                             str(valor_fo)]) 
-            print ("\033["+"7;30;45"+"m "+"\u2503"+" "* tamano +"\u2503"+" "* tamano+"\u2503"+" "* tamano+"\u2503"+" "* tamano+"\u2503"+" "* tamano+"\u2503"+" "* tamano+"\u2503"+" "* tamano+"\u2503"+" \033[0m")
+            print ("\033["+"7;30;45"+"m "+"\u2503"+" ".center(tamano," ") +"\u2503"+" ".center(tamano," ")+"\u2503"+" ".center(tamano," ")+"\u2503"+" ".center(tamano," ")+"\u2503"+" ".center(tamano," ")+"\u2503"+" ".center(tamano," ")+"\u2503"+" ".center(tamano," ")+"\u2503"+" \033[0m")
             print (linea)
             print ("\033["+"7;30;45"+"m "+"\u2523"+("\u2501"* (tamano)+"\u254B")*6+("\u2501"*tamano)+"\u252B"+" \033[0m")
 
     def saber_mayor (self, intervalos):
-        tamaño_mayor = 0
+        tamaño_mayor = 14
         for intervalo in intervalos:
             valor_1 = len(str(intervalo [0]))
             valor_2 = len(str(intervalo [1]))
@@ -89,7 +89,6 @@ class accion_1:
         return (mensaje)
 
 #INSTACIA DE LA CLASE ACCION_1
-
 creacion_accion_1 = accion_1()
-intervalos = [['jusb',5456456,67867867866,742345345,4564568,123457894855690,123457894855690],['jusb',5456456,67867867866,742345345,4564568,123457894855690,123457894855690]]
+intervalos = [['1',2,1,3,4,5,14],['1',1,1,45,89,456,1234]]
 creacion_accion_1.dibujar(intervalos)
