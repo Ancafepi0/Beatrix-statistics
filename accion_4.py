@@ -5,7 +5,7 @@ class accion_4:
     def dibujar (self,intervalos):
         valores_en_gragos=[]
         for i in intervalos:
-            valores_en_gragos.append(i[1])
+            valores_en_gragos.append(i[6])
         self.insertador_de_colores(intervalos)
         intervalos = self.acomodador_grados(intervalos)
         W =  "\033[30m" + "W"
@@ -81,7 +81,7 @@ class accion_4:
         print(reset)
         l=0
         for i in intervalos:
-            print (i[2]+" COLOR \u2588 "+"NOMBRE = "+i[0]+" "+"VALOR EN GRADOS =  "+str(valores_en_gragos[l])+"°"+"\n")
+            print (i[7]+" COLOR \u2588 "+"NOMBRE = "+i[0]+" "+"VALOR EN GRADOS =  "+str(valores_en_gragos[l])+"°"+"\n")
             l +=1
         print(reset)
     def insertador_de_colores (self,intervalos):
@@ -106,32 +106,32 @@ class accion_4:
         for i in range (len(intervalos)):
             color = colores[i % len(colores)]
             intervalos[i].append (str(color))
-    def redondear_a_decena_mas_cercana(numero):
+    def redondear_a_decena_mas_cercana(self,numero):
         return round(numero / 10) * 10
     def acomodador_grados (self,intervalos):
         for sublista in intervalos:
-            if (sublista[1] % 10 != 0): 
-                sublista[1] = self.redondear_a_decena_mas_cercana(sublista[1])
+            if (sublista[6] % 10 != 0): 
+                sublista[6] = self.redondear_a_decena_mas_cercana(sublista[6])
 
-        suma_total = sum(sublista[1] for sublista in intervalos)
+        suma_total = sum(sublista[6] for sublista in intervalos)
         while suma_total > 360:
         # Encontrar el valor más grande
-            max_sublista = max(intervalos, key=lambda x: x[1])
+            max_sublista = max(intervalos, key=lambda x: x[6])
             # Restar 10 del valor más grande
-            max_sublista[1] -= 10
+            max_sublista[6] -= 10
             # Recalcular la suma total
-            suma_total = sum(sublista[1] for sublista in intervalos)
+            suma_total = sum(sublista[6] for sublista in intervalos)
         return intervalos
     def encontrar_color (self,intervalos):
         for i in intervalos:
-            if (i[1]==0):
+            if (i[6]==0):
                 continue
-            elif(i[1]>0):
-                i[1] -= 10
-                return (i[2])
-        return (intervalos[len(intervalos)-1][2])
+            elif(i[6]>0):
+                i[6] -= 10
+                return (i[7])
+        return (intervalos[len(intervalos)-1][7])
                 
         
 ejecutar_4 = accion_4()
-lista_intervalos = [["Lupe",60],["Lupe",60],["Lupe",60],["Lupe",60],["Lupe",60],["Lupe",60]]
+lista_intervalos = [['1',2,1,3,4,5,14],['1',1,1,45,89,456,1234]]
 ejecutar_4.dibujar(lista_intervalos)

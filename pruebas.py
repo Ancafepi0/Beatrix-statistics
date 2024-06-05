@@ -93,10 +93,9 @@ reset = "\033[0m"
 # Reiniciar el estilo para no afectar el resto de la salida del terminal
 print(reset)
 # Lista de listas
-lista_de_listas = [
-    ['a', 40],
-    ['b', 70],
-    ['c', 60],
+lista_de_listas = [['a', 40,456],
+                   ['b', 70],
+                   ['c', 60],
     ['d', 150],
     ['e', 200]
 ]
@@ -122,5 +121,9 @@ while suma_total > 360:
     suma_total = sum(sublista[1] for sublista in lista_de_listas)
 
 # Mostrar la lista modificada
-print(lista_de_listas)
+#['a', 40,456]
+for i in lista_de_listas:
+    #a , 40,456
+    for j in i:
+        print (j)
 
