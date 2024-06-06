@@ -24,9 +24,6 @@ El programa muestra de manera gráfica lo siguiente:
 - Gráfica de barras.
 - Gráfica de pastel.
 - Gráfica de puntos.
-- Diagrama de tallo y hojas.
-- Sesgo de los datos.
 - Ojiva
-- Cuartiles.
-- Teorema de Chevyshev y la regla empírica.
+- Teorema de Chevyshev 
 
